@@ -2,7 +2,7 @@ import sortUsers from "@/utils/sortUsers";
 import filterUsers from "@/utils/filterUsers";
 import { UserItemProps } from "@/components/user-item";
 
-const filterAndSortFilms = (
+const filterAndSortUsers = (
     isFilter: boolean,
     typeSort: string | null,
     usersData: UserItemProps[],
@@ -11,4 +11,4 @@ const filterAndSortFilms = (
     return sortUsers(typeSort, filteredUsers);
 };
 
-export default filterAndSortFilms;
+export default filterAndSortUsers;

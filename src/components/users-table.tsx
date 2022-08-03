@@ -1,7 +1,7 @@
 import { FC } from "react";
 import usersData from "@/data/users";
 import { UserItem } from "@/components/user-item";
-import filterAndSortFilms from "@/utils/filterAndSortFilms";
+import filterAndSortUsers from "@/utils/filterAndSortUsers";
 
 interface UsersTableProps {
     sort: string | null;
@@ -9,7 +9,7 @@ interface UsersTableProps {
 }
 
 const UsersTable: FC<UsersTableProps> = ({ sort, filter }) => {
-    const users = filterAndSortFilms(filter, sort, usersData);
+    const users = filterAndSortUsers(filter, sort, usersData);
     const userItems = users.map((user) => <UserItem {...user} key={user.id} />);
 
     const handleClick = () => {};
