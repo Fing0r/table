@@ -15,10 +15,10 @@ function sortByName(a: string, b: string) {
 }
 
 function sortByBirthday(a: string, b: string) {
-    const ageA = new Date(a).getTime();
-    const ageB = new Date(b).getTime();
+    const birthdayA = new Date(a).getTime();
+    const birthdayB = new Date(b).getTime();
 
-    return ageA - ageB;
+    return birthdayA - birthdayB;
 }
 
 const sortUsers = (type: string | null, data: UserItemProps[]) => {
