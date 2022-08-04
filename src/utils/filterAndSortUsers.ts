@@ -1,11 +1,11 @@
 import sortUsers from "@/utils/sortUsers";
 import filterUsers from "@/utils/filterUsers";
-import { UserItemProps } from "@/components/user-item";
+import { IUserItem } from "@/components/user-item";
 
 const filterAndSortUsers = (
     isFilter: boolean,
     typeSort: string | null,
-    usersData: UserItemProps[],
+    usersData: IUserItem[],
 ) => {
     const filteredUsers = filterUsers(isFilter, usersData);
     return sortUsers(typeSort, filteredUsers);

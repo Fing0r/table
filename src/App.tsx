@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import "./style/App.css";
-import { Filters } from "./components/filters";
+import { Filters } from "./components/filters/filters";
 import { UsersTable } from "@/components/users-table";
 
 const App: FC = () => {

@@ -1,4 +1,4 @@
-import { UserItemProps } from "@/components/user-item";
+import { IUserItem } from "@/components/user-item";
 
 function getAge(DOB: string) {
     const today = new Date();
@@ -11,10 +11,10 @@ function getAge(DOB: string) {
     return age;
 }
 
-function filterByAge(data: UserItemProps[]) {
+function filterByAge(data: IUserItem[]) {
     return data.filter(({ birthday }) => getAge(birthday) >= 18);
 }
 
-const filterUsers = (filter: boolean, data: UserItemProps[]) => (filter ? filterByAge(data) : data);
+const filterUsers = (filter: boolean, data: IUserItem[]) => (filter ? filterByAge(data) : data);
 
 export default filterUsers;

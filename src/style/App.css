@@ -1,74 +1,65 @@
-html {
-  box-sizing: border-box;
+@media (max-width: 991px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  line-height: calc(28 / 24);
-  color: #000000;
-  font-size: 24px;
-}
-
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-}
-
-ul,
-ol {
-  padding: 0;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
-  margin: 0;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  border: none;
-  font: inherit;
-}
-
-input::placeholder {
-  padding: 0;
-}
-
-a {
-  color: inherit;
+table.user-table {
   text-decoration: none;
-  cursor: pointer;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
 }
 
-button {
-  padding: 0;
-  background-color: transparent;
-  cursor: pointer;
+table.user-table th {
+  font-weight: normal;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #354251;
+}
+
+table.user-table td {
+  font-size: 13px;
+  color: #354251;
+}
+
+table.user-table td, table.user-table th {
+  white-space: pre-wrap;
+  padding: 10px 5px;
+  line-height: 13px;
+  vertical-align: middle;
+  border: 1px solid #354251;
+}
+
+table.user-table tr:hover {
+  background-color: #f9fafb
+}
+
+table.user-table tr:hover td {
+  color: #354251;
+  cursor: default;
+}
+
+@media (max-width: 991px) {
+  table.user-table {
+    width: 1200px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  transition: background-color 0.3s;
+}
+
+.row-selected {
+  background-color: rgba(3, 3, 3, 0.2)
+}
+
+table.user-table  tr.row-selected:hover {
+  background-color: rgba(3, 3, 3, 0.2)
 }

@@ -1,5 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import classNames from "classnames";
+import styles from "./filters.module.scss"
 import { ReactComponent as Arrow } from "@/assets/arrow.svg";
 import { SortType } from "@/utils/sortUsers";
 
@@ -12,14 +13,14 @@ interface FiltersProps {
 
 const Filters: FC<FiltersProps> = ({ setFilter, setSort, sort, filter }) => {
     const handleSortByName = () => {
-        const sortType = sort === SortType.NAME_UP ? SortType.NAME_DOWN : SortType.NAME_UP;
+        const sortType = sort === SortType.NAME_ASC ? SortType.NAME_DESC : SortType.NAME_ASC;
 
         setSort(sortType);
     };
 
     const handleSortByBirthday = () => {
         const sortType =
-            sort === SortType.BIRTHDAY_UP ? SortType.BIRTHDAY_DOWN : SortType.BIRTHDAY_UP;
+            sort === SortType.BIRTHDAY_ASC ? SortType.BIRTHDAY_DESC : SortType.BIRTHDAY_ASC;
 
         setSort(sortType);
     };
@@ -28,45 +29,46 @@ const Filters: FC<FiltersProps> = ({ setFilter, setSort, sort, filter }) => {
         setFilter(!filter);
     };
 
-    const classesBtnName = classNames("filters__btn", {
-        "filters__btn--active": sort === SortType.NAME_UP || sort === SortType.NAME_DOWN,
-        "filters__btn--rotate": sort === SortType.NAME_DOWN,
-    });
-
-    const classesBtnAge = classNames("filters__btn", {
-        "filters__btn--active": sort === SortType.BIRTHDAY_UP || sort === SortType.BIRTHDAY_DOWN,
-        "filters__btn--rotate": sort === SortType.BIRTHDAY_DOWN,
+    const classesBtn = (asc: string, desc: string) => classNames(styles.filters__btn, {
+        [styles['filters__btn--active']]: sort === asc || sort === desc,
+        [styles['filters__btn--rotate']]: sort === asc,
     });
 
     return (
-        <div className='filters'>
-            <h2 className='filters__title'>Сортировка</h2>
-            <div className='filters__btns'>
+        <div className={styles.filters}>
+            <h2 className={styles.filters__title}>Сортировка</h2>
+            <div className={styles.filters__btns}>
                 <button
+                    className={styles.filters__btn}
                     disabled={sort === SortType.ID}
-                    className='filters__btn'
                     type='button'
-                    onClick={() => {
-                        setSort("ID");
-                    }}
+                    onClick={() => {setSort("ID")}}
                 >
                     По ID
                 </button>
 
-                <button className={classesBtnName} type='button' onClick={handleSortByName}>
+                <button
+                    className={classesBtn(SortType.NAME_ASC, SortType.NAME_DESC)}
+                    type='button'
+                    onClick={handleSortByName}
+                >
                     По имени
-                    <Arrow width='15px' height='8px' className='icon' />
+                    <Arrow width='15px' height='8px' className={styles.icon} />
                 </button>
 
-                <button className={classesBtnAge} type='button' onClick={handleSortByBirthday}>
+                <button
+                    className={classesBtn(SortType.BIRTHDAY_ASC, SortType.BIRTHDAY_DESC)}
+                    type='button'
+                    onClick={handleSortByBirthday}
+                >
                     По дате рождения
-                    <Arrow width='15px' height='8px' className='icon' />
+                    <Arrow width='15px' height='8px' className={styles.icon} />
                 </button>
             </div>
 
-            <label className='filters__label' htmlFor='filter'>
+            <label className={styles.filters__label} htmlFor='filter'>
                 <input
-                    className='filters__checkbox'
+                    className={styles.filters__checkbox}
                     type='checkbox'
                     checked={filter}
                     name='filter'

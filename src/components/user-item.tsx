@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import React, {FC, MouseEvent} from "react";
+import classNames from "classnames";
 
-export interface UserItemProps {
+export interface IUserItem {
     id: number;
     birthday: string;
     name: string;
@@ -10,9 +11,25 @@ export interface UserItemProps {
     website: string;
 }
 
-const UserItem: FC<UserItemProps> = ({ email, id, name, website, phone, birthday, username }) => {
+interface UserItemProps {
+    user: IUserItem,
+    isActive: boolean,
+    handleClick: (e: MouseEvent<HTMLTableRowElement>) => void
+}
+
+const UserItem: FC<UserItemProps> = ({
+         user: {email, id, name, website, phone, birthday, username},
+         isActive, handleClick
+     }) => {
+    
+    const rowClasses = classNames( "row", {"row-selected": isActive})
+    
     return (
-        <tr>
+        <tr
+            data-id={id}
+            onClick={handleClick}
+            className={rowClasses}
+        >
             <td>{id}</td>
             <td>{birthday}</td>
             <td>{name}</td>
@@ -24,4 +41,4 @@ const UserItem: FC<UserItemProps> = ({ email, id, name, website, phone, birthday
     );
 };
 
-export { UserItem };
+export {UserItem};
